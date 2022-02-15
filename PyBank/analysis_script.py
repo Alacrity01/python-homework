@@ -37,7 +37,7 @@ budget_data.close()
 report_data = (number_of_months,net,average,delta_max,delta_min)
 
 # def report(number_of_months, net, average, delta_max, delta_min):
-def report(report_data):
+def report_to_terminal(report_data):
     print("Financial Analysis")
     print("----------------------------")
     print(f"Total Months: {number_of_months}")
@@ -46,8 +46,23 @@ def report(report_data):
     print(f"Greatest Increase in Profits: {month_max} (${delta_max})")
     print(f"Greatest Decrease in Profits: {month_min} (${delta_min})")
 
-report(report_data)
-# report(number_of_months,net,average,delta_min,delta_max)
+def report_to_file(report_data):
+    f = open("Financial-Analysis.txt","w")
+    f.write("Financial Analysis\n")
+    f.write("----------------------------\n")
+    f.write(f"Total Months: {number_of_months}\n")
+    f.write(f"Total: {int(net)}\n")
+    f.write(f"Average  Change: ${average:.2f}\n")
+    f.write(f"Greatest Increase in Profits: {month_max} (${delta_max})\n")
+    f.write(f"Greatest Decrease in Profits: {month_min} (${delta_min})\n") 
+    f.close()
+
+
+report_to_terminal(report_data)
+report_to_file(report_data)
+
+
+
 # Expected output:
 #       Financial Analysis
 #       ----------------------------
